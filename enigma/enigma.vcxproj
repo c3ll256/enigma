@@ -30,8 +30,9 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <IncludePath>C:\Users\frank\Documents\Visual Studio 2015\Projects\enigma\enigma\libqrencode;C:\Users\frank\Documents\Visual Studio 2015\Projects\enigma\enigma\QZXing;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\frank\Documents\Visual Studio 2015\Projects\enigma\enigma\libqrencode;C:\Users\frank\Documents\Visual Studio 2015\Projects\enigma\enigma\QZXing;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\enigma\libqrencode;..\enigma\QZXing;$(IncludePath)</IncludePath>
+    <LibraryPath>..\enigma\libqrencode;..\enigma\QZXing;$(LibraryPath)</LibraryPath>
+    <ReferencePath>$(VC_ReferencesPath_x64);</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
