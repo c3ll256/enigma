@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/enigma">
+        <file>sample.png</file>
+    </qresource>
+</RCC>
