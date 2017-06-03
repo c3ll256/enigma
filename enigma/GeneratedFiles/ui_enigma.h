@@ -13,12 +13,15 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTabWidget>
 #include <QtWidgets/QWidget>
-#include "encoder.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -26,9 +29,18 @@ class Ui_enigmaClass
 {
 public:
     QWidget *centralWidget;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
-    encoder *widget;
+    QTabWidget *tabWidget;
+    QWidget *tabEncode;
+    QLineEdit *lineTxtNowAddress;
+    QPushButton *btnEncode;
+    QPushButton *btnChooseAddress;
+    QRadioButton *rbtnEncodeSaveSide;
+    QRadioButton *rbtnEncodeChoose;
+    QLineEdit *lineEncodeSaveNowAddress;
+    QCheckBox *chkEncodeDebug;
+    QWidget *tabEncodeInfo;
+    QWidget *tabDecode;
+    QWidget *tabDecodeInfo;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *enigmaClass)
@@ -38,15 +50,42 @@ public:
         enigmaClass->resize(600, 400);
         centralWidget = new QWidget(enigmaClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        pushButton = new QPushButton(centralWidget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(60, 130, 181, 51));
-        pushButton_2 = new QPushButton(centralWidget);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(350, 290, 171, 51));
-        widget = new encoder(centralWidget);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(320, 50, 221, 221));
+        tabWidget = new QTabWidget(centralWidget);
+        tabWidget->setObjectName(QStringLiteral("tabWidget"));
+        tabWidget->setGeometry(QRect(10, 10, 581, 381));
+        tabEncode = new QWidget();
+        tabEncode->setObjectName(QStringLiteral("tabEncode"));
+        lineTxtNowAddress = new QLineEdit(tabEncode);
+        lineTxtNowAddress->setObjectName(QStringLiteral("lineTxtNowAddress"));
+        lineTxtNowAddress->setGeometry(QRect(20, 40, 261, 20));
+        btnEncode = new QPushButton(tabEncode);
+        btnEncode->setObjectName(QStringLiteral("btnEncode"));
+        btnEncode->setGeometry(QRect(380, 40, 141, 23));
+        btnChooseAddress = new QPushButton(tabEncode);
+        btnChooseAddress->setObjectName(QStringLiteral("btnChooseAddress"));
+        btnChooseAddress->setGeometry(QRect(290, 40, 75, 23));
+        rbtnEncodeSaveSide = new QRadioButton(tabEncode);
+        rbtnEncodeSaveSide->setObjectName(QStringLiteral("rbtnEncodeSaveSide"));
+        rbtnEncodeSaveSide->setGeometry(QRect(30, 160, 171, 21));
+        rbtnEncodeChoose = new QRadioButton(tabEncode);
+        rbtnEncodeChoose->setObjectName(QStringLiteral("rbtnEncodeChoose"));
+        rbtnEncodeChoose->setGeometry(QRect(240, 160, 89, 21));
+        lineEncodeSaveNowAddress = new QLineEdit(tabEncode);
+        lineEncodeSaveNowAddress->setObjectName(QStringLiteral("lineEncodeSaveNowAddress"));
+        lineEncodeSaveNowAddress->setGeometry(QRect(360, 160, 201, 20));
+        chkEncodeDebug = new QCheckBox(tabEncode);
+        chkEncodeDebug->setObjectName(QStringLiteral("chkEncodeDebug"));
+        chkEncodeDebug->setGeometry(QRect(30, 290, 101, 16));
+        tabWidget->addTab(tabEncode, QString());
+        tabEncodeInfo = new QWidget();
+        tabEncodeInfo->setObjectName(QStringLiteral("tabEncodeInfo"));
+        tabWidget->addTab(tabEncodeInfo, QString());
+        tabDecode = new QWidget();
+        tabDecode->setObjectName(QStringLiteral("tabDecode"));
+        tabWidget->addTab(tabDecode, QString());
+        tabDecodeInfo = new QWidget();
+        tabDecodeInfo->setObjectName(QStringLiteral("tabDecodeInfo"));
+        tabWidget->addTab(tabDecodeInfo, QString());
         enigmaClass->setCentralWidget(centralWidget);
         statusBar = new QStatusBar(enigmaClass);
         statusBar->setObjectName(QStringLiteral("statusBar"));
@@ -54,14 +93,26 @@ public:
 
         retranslateUi(enigmaClass);
 
+        tabWidget->setCurrentIndex(0);
+
+
         QMetaObject::connectSlotsByName(enigmaClass);
     } // setupUi
 
     void retranslateUi(QMainWindow *enigmaClass)
     {
         enigmaClass->setWindowTitle(QApplication::translate("enigmaClass", "enigma", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("enigmaClass", "Decode", Q_NULLPTR));
-        pushButton_2->setText(QApplication::translate("enigmaClass", "Encode", Q_NULLPTR));
+        lineTxtNowAddress->setText(QApplication::translate("enigmaClass", "\345\275\223\345\211\215\350\267\257\345\276\204", Q_NULLPTR));
+        btnEncode->setText(QApplication::translate("enigmaClass", "\347\274\226\347\240\201\345\275\223\345\211\215\350\267\257\345\276\204\344\270\213\347\232\204\346\226\207\346\234\254", Q_NULLPTR));
+        btnChooseAddress->setText(QApplication::translate("enigmaClass", "\351\200\211\346\213\251\350\267\257\345\276\204", Q_NULLPTR));
+        rbtnEncodeSaveSide->setText(QApplication::translate("enigmaClass", "\347\274\226\347\240\201\345\233\276\347\211\207\344\277\235\345\255\230\345\210\260\346\226\207\346\234\254\346\227\201", Q_NULLPTR));
+        rbtnEncodeChoose->setText(QApplication::translate("enigmaClass", "\351\200\211\346\213\251\344\277\235\345\255\230\350\267\257\345\276\204", Q_NULLPTR));
+        lineEncodeSaveNowAddress->setText(QApplication::translate("enigmaClass", "\345\275\223\345\211\215\350\267\257\345\276\204", Q_NULLPTR));
+        chkEncodeDebug->setText(QApplication::translate("enigmaClass", "\345\274\200\345\220\257\350\260\203\350\257\225\344\277\241\346\201\257", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tabEncode), QApplication::translate("enigmaClass", "\347\274\226\347\240\201", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tabEncodeInfo), QApplication::translate("enigmaClass", "\347\274\226\347\240\201\344\277\241\346\201\257\347\273\237\350\256\241", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tabDecode), QApplication::translate("enigmaClass", "\350\247\243\347\240\201", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tabDecodeInfo), QApplication::translate("enigmaClass", "\350\247\243\347\240\201\344\277\241\346\201\257\347\273\237\350\256\241", Q_NULLPTR));
     } // retranslateUi
 
 };
