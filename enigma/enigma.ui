@@ -14,134 +14,54 @@
    <string>enigma</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QTabWidget" name="tabWidget">
+   <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>581</width>
-      <height>381</height>
+      <x>60</x>
+      <y>130</y>
+      <width>181</width>
+      <height>51</height>
      </rect>
     </property>
-    <property name="currentIndex">
-     <number>0</number>
+    <property name="text">
+     <string>Decode</string>
     </property>
-    <widget class="QWidget" name="tabEncode">
-     <attribute name="title">
-      <string>编码</string>
-     </attribute>
-     <widget class="QLineEdit" name="lineTxtNowAddress">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>40</y>
-        <width>261</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>当前路径</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btnEncode">
-      <property name="geometry">
-       <rect>
-        <x>380</x>
-        <y>40</y>
-        <width>141</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>编码当前路径下的文本</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btnChooseAddress">
-      <property name="geometry">
-       <rect>
-        <x>290</x>
-        <y>40</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>选择路径</string>
-      </property>
-     </widget>
-     <widget class="QRadioButton" name="rbtnEncodeSaveSide">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>160</y>
-        <width>171</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>编码图片保存到文本旁</string>
-      </property>
-     </widget>
-     <widget class="QRadioButton" name="rbtnEncodeChoose">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>160</y>
-        <width>89</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>选择保存路径</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEncodeSaveNowAddress">
-      <property name="geometry">
-       <rect>
-        <x>360</x>
-        <y>160</y>
-        <width>201</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>当前路径</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="chkEncodeDebug">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>290</y>
-        <width>101</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>开启调试信息</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tabEncodeInfo">
-     <attribute name="title">
-      <string>编码信息统计</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tabDecode">
-     <attribute name="title">
-      <string>解码</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tabDecodeInfo">
-     <attribute name="title">
-      <string>解码信息统计</string>
-     </attribute>
-    </widget>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>290</y>
+      <width>171</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Encode</string>
+    </property>
+   </widget>
+   <widget class="encoder" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>50</y>
+      <width>221</width>
+      <height>221</height>
+     </rect>
+    </property>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>encoder</class>
+   <extends>QWidget</extends>
+   <header>encoder.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="enigma.qrc"/>
  </resources>
