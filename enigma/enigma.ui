@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tabEncode">
      <attribute name="title">
@@ -56,7 +56,7 @@
        <string>编码当前路径下的文本</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btnChooseAddress">
+     <widget class="QPushButton" name="btnEncodeChooseAddress">
       <property name="geometry">
        <rect>
         <x>290</x>
@@ -131,6 +131,97 @@
      <attribute name="title">
       <string>解码</string>
      </attribute>
+     <widget class="QLineEdit" name="lineBmpNowAddress">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>40</y>
+        <width>261</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>当前路径</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnDecodeChooseAddress">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>40</y>
+        <width>71</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>选择路径</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnDecode">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>40</y>
+        <width>151</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>解码当前路径下QRCode</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="rbtnDecodeSaveSide">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>160</y>
+        <width>141</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>解码文本保存到图片旁</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="rbtnDecodeChoose">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>160</y>
+        <width>89</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>选择保存路径</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineDecodeSaveNowAddress">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>160</y>
+        <width>211</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>当前路径</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="chkDecodeDebug">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>290</y>
+        <width>101</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>开启调试信息</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tabDecodeInfo">
      <attribute name="title">
