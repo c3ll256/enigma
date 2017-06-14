@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tabEncode">
      <attribute name="title">
@@ -81,6 +81,9 @@
       <property name="text">
        <string>编码图片保存到文本旁</string>
       </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QRadioButton" name="rbtnEncodeChoose">
       <property name="geometry">
@@ -94,8 +97,14 @@
       <property name="text">
        <string>选择保存路径</string>
       </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
      </widget>
      <widget class="QLineEdit" name="lineEncodeSaveNowAddress">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>360</x>
@@ -113,12 +122,38 @@
        <rect>
         <x>30</x>
         <y>290</y>
-        <width>101</width>
+        <width>131</width>
         <height>16</height>
        </rect>
       </property>
       <property name="text">
-       <string>开启调试信息</string>
+       <string>开启详细调试信息</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblEncodeState">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>290</y>
+        <width>151</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>290</y>
+        <width>81</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>状态：</string>
       </property>
      </widget>
     </widget>
@@ -167,7 +202,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>解码当前路径下QRCode</string>
+       <string>解码当前路径下二维码</string>
       </property>
      </widget>
      <widget class="QRadioButton" name="rbtnDecodeSaveSide">
@@ -181,6 +216,9 @@
       </property>
       <property name="text">
        <string>解码文本保存到图片旁</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QRadioButton" name="rbtnDecodeChoose">
@@ -197,6 +235,9 @@
       </property>
      </widget>
      <widget class="QLineEdit" name="lineDecodeSaveNowAddress">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>350</x>
@@ -212,14 +253,40 @@
      <widget class="QCheckBox" name="chkDecodeDebug">
       <property name="geometry">
        <rect>
-        <x>40</x>
+        <x>30</x>
         <y>290</y>
-        <width>101</width>
+        <width>121</width>
         <height>16</height>
        </rect>
       </property>
       <property name="text">
-       <string>开启调试信息</string>
+       <string>开启详细调试信息</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>290</y>
+        <width>81</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>状态：</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblDecodeState">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>290</y>
+        <width>151</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
