@@ -12,10 +12,16 @@ class enigma : public QMainWindow
 {
 	Q_OBJECT
 		public slots:
+	void clickBtnEncodeChooseAddress();
+	void clickRbtnEncodeSaveSide();
+	void clickRbtnEncodeChoose();
+	void clickBtnEncode();
 public:
-		enigma(QWidget *parent = 0);
-		~enigma();
+	enigma(QWidget *parent = 0);
+	~enigma();
 private:
-			Ui::enigmaClass ui;
+	Ui::enigmaClass ui;
+	int count;
+	QStringList getAllFilePath(bool isTxt,QString path);
 };
 
