@@ -64,6 +64,15 @@
     <ClCompile Include="encode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_thread.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_thread.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="thread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="enigma.h">
@@ -76,6 +85,9 @@
       <Filter>Resource Files</Filter>
     </CustomBuild>
     <CustomBuild Include="encoder.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="thread.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>

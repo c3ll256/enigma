@@ -37,7 +37,7 @@ bool encoder::saveImage(QString fileName, int size) // ±£´æÍ¼Æ¬Ãû£¨Ê¹ÓÃÍêÕûÂ·¾¶£
 	}
 }
 
-void encoder::generateString(QString str) // ±àÂëÄÚÈİ
+void encoder::generateString(QString str) // Éú³É¶şÎ¬ÂëÊı¾İ½á¹¹
 {
 	string = str;
 	if (qr != NULL)
@@ -53,7 +53,7 @@ void encoder::generateString(QString str) // ±àÂëÄÚÈİ
 
 }
 
-void encoder::draw(QPainter &painter, int width, int height)
+void encoder::draw(QPainter &painter, int width, int height) // »æÖÆ¶şÎ¬ÂëÍ¼Ïñ
 {
 	QColor foreground(Qt::black);
 	painter.setBrush(foreground);
@@ -74,7 +74,7 @@ void encoder::draw(QPainter &painter, int width, int height)
 	}
 }
 
-void encoder::paintEvent(QPaintEvent *)
+void encoder::paintEvent(QPaintEvent *) // ÉèÖÃ±ÊË¢
 {
 	QPainter painter(this);
 	QColor background(Qt::white);
@@ -102,7 +102,7 @@ QSize encoder::sizeHint()  const
 	return s;
 }
 
-QSize encoder::minimumSizeHint()  const
+QSize encoder::minimumSizeHint()  const 
 {
 	QSize s;
 	if (qr != NULL)
