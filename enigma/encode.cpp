@@ -15,7 +15,7 @@ encoder::~encoder()
 	}
 }
 
-bool encoder::saveImage(QString fileName, int size)
+bool encoder::saveImage(QString fileName, int size) // 保存图片名（使用完整路径），保存图片大小为size*size 像素
 {
 	if (size != 0 && !fileName.isEmpty())
 	{
@@ -37,7 +37,7 @@ bool encoder::saveImage(QString fileName, int size)
 	}
 }
 
-void encoder::generateString(QString str)
+void encoder::generateString(QString str) // 编码内容
 {
 	string = str;
 	if (qr != NULL)
