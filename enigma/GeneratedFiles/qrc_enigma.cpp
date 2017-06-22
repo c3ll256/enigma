@@ -1,13 +1,13 @@
 /****************************************************************************
 ** Resource object code
 **
-** Created by: The Resource Compiler for Qt version 5.8.0
+** Created by: The Resource Compiler for Qt version 5.9.0
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
 static const unsigned char qt_resource_data[] = {
-  // D:/Code/Repos/enigma/enigma/sample.png
+  // C:/Users/frank/Source/Repos/enigma/enigma/sample.png
   0x0,0x0,0x1a,0xf2,
   0x89,
   0x50,0x4e,0x47,0xd,0xa,0x1a,0xa,0x0,0x0,0x0,0xd,0x49,0x48,0x44,0x52,0x0,
@@ -468,7 +468,7 @@ static const unsigned char qt_resource_struct[] = {
 0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,
   // :/enigma/sample.png
   0x0,0x0,0x0,0x12,0x0,0x0,0x0,0x0,0x0,0x1,0x0,0x0,0x0,0x0,
-0x0,0x0,0x1,0x5c,0x9c,0x4e,0xb5,0x1b,
+0x0,0x0,0x1,0x5c,0x76,0x6,0xf6,0x5f,
 
 };
 
@@ -500,7 +500,7 @@ int QT_RCC_MANGLE_NAMESPACE(qInitResources_enigma)();
 int QT_RCC_MANGLE_NAMESPACE(qInitResources_enigma)()
 {
     QT_RCC_PREPEND_NAMESPACE(qRegisterResourceData)
-        (0x02, qt_resource_struct, qt_resource_name, qt_resource_data);
+        (0x2, qt_resource_struct, qt_resource_name, qt_resource_data);
     return 1;
 }
 
@@ -508,7 +508,7 @@ int QT_RCC_MANGLE_NAMESPACE(qCleanupResources_enigma)();
 int QT_RCC_MANGLE_NAMESPACE(qCleanupResources_enigma)()
 {
     QT_RCC_PREPEND_NAMESPACE(qUnregisterResourceData)
-       (0x02, qt_resource_struct, qt_resource_name, qt_resource_data);
+       (0x2, qt_resource_struct, qt_resource_name, qt_resource_data);
     return 1;
 }
 

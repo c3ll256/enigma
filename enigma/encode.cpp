@@ -15,7 +15,7 @@ encoder::~encoder()
 	}
 }
 
-bool encoder::saveImage(QString fileName, int size)
+bool encoder::saveImage(QString fileName, int size) // 保存图片名（使用完整路径），保存图片大小为size*size 像素
 {
 	if (size != 0 && !fileName.isEmpty())
 	{
@@ -37,7 +37,7 @@ bool encoder::saveImage(QString fileName, int size)
 	}
 }
 
-void encoder::generateString(QString str)
+void encoder::generateString(QString str) // 生成二维码数据结构
 {
 	string = str;
 	if (qr != NULL)
@@ -53,7 +53,7 @@ void encoder::generateString(QString str)
 
 }
 
-void encoder::draw(QPainter &painter, int width, int height)
+void encoder::draw(QPainter &painter, int width, int height) // 绘制二维码图像
 {
 	QColor foreground(Qt::black);
 	painter.setBrush(foreground);
@@ -74,7 +74,7 @@ void encoder::draw(QPainter &painter, int width, int height)
 	}
 }
 
-void encoder::paintEvent(QPaintEvent *)
+void encoder::paintEvent(QPaintEvent *) // 设置笔刷
 {
 	QPainter painter(this);
 	QColor background(Qt::white);
@@ -102,7 +102,7 @@ QSize encoder::sizeHint()  const
 	return s;
 }
 
-QSize encoder::minimumSizeHint()  const
+QSize encoder::minimumSizeHint()  const 
 {
 	QSize s;
 	if (qr != NULL)
