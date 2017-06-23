@@ -1,14 +1,16 @@
 #include "enigma.h"
+#include "encoder.h"
 #include <ui_enigma.h>
 #include <qimage.h>
 #include <qmessagebox.h>
 #include <qfiledialog.h>
-#include <QZXing.h>
+#include <QFile>
 
 enigma::enigma(QWidget *parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
+	EnCode.Flag = true; 
 	//信号与槽连接 begin
 	connect(ui.btnEncodeChooseAddress, SIGNAL(clicked()), this, SLOT(clickBtnEncodeChooseAddress()));
 	connect(ui.rbtnEncodeSaveSide, SIGNAL(clicked()), this, SLOT(clickRbtnEncodeSaveSide()));
@@ -28,11 +30,11 @@ void enigma::clickBtnEncodeChooseAddress()//选择要编码的txt的文件夹根路径
 	{
 		ui.lineTxtNowAddress->setText(getPath);
 	}
+	RootPath = getPath;
 }
 
 void enigma::clickRbtnEncodeSaveSide()//选择保存图片到文本旁
 {
-	setFlag = false;
 	ui.lineEncodeSaveNowAddress->setEnabled(false);
 }
 
@@ -42,13 +44,15 @@ void enigma::clickRbtnEncodeChoose()//选择保存的图片路径
 	QString getPath = QFileDialog::getExistingDirectory(this);
 	if (!getPath.isNull())
 	{
-		setFlag = true;
 		ui.lineEncodeSaveNowAddress->setText(getPath);
 	}
+	enigma::SavePath = getPath;
 }
 
-void enigma::clickBtnEncode()//编码按钮触发事件
+void enigma::clickBtnEncode()//开始编码
 {
+	EnCode.Flag = true;
+	RootPath = ui.lineTxtNowAddress->text();
 	QDir txtPath(ui.lineTxtNowAddress->text()),savePath(ui.lineEncodeSaveNowAddress->text());
 	if (!txtPath.exists())//判断需要编码的根文件夹是否存在
 	{
@@ -71,42 +75,13 @@ void enigma::clickBtnEncode()//编码按钮触发事件
 	ui.lblEncodeState->setStyleSheet("color:black;");
 	ui.lblEncodeState->setText(QStringLiteral("编码中..."));
 	count = 0;
-	QStringList allTxtPath = getAllFilePath(true,ui.lineTxtNowAddress->text());
-	QString path;
-	path = allTxtPath.at(0);
-	QFile *file = new QFile(path);
-	file->open(QIODevice::ReadOnly | QIODevice::Text);
-	QString data = QString(file->readAll());
-	file->close();
-	QImage qrcode = encoder.encodeData(data);
-	qrcode.save("123.jpg");
-	ui.lblEncodeState->setText(data);
+	//QStringList allTxtPath = getAllFilePath(true,ui.lineTxtNowAddress->text());
+	if (ui.lineEncodeSaveNowAddress->isEnabled() == false) // 设置保存目录为当前路径
+		SavePath = RootPath; 
+	EnCode.RootPath = enigma::RootPath; // 设置编码线程根目录
+	EnCode.SavePath = enigma::SavePath; //设置编码线程保存目录
+	EnCode.start(); // 解码线程开始工作
 	//结束编码
-}
-
-QStringList enigma::getAllFilePath(bool isTxt,QString path)//获取所有文件路径
-{
-	QStringList filters;
-	if (isTxt)//文件过滤
-	{
-		filters << QString("*.txt");
-	}
-	else
-	{
-		filters << QString("*.bmp");
-	}
-	QDirIterator dirIterator(path,
-		filters,
-		QDir::Files | QDir::NoSymLinks,
-		QDirIterator::Subdirectories);
-	QStringList stringList;
-	while (dirIterator.hasNext())
-	{
-		dirIterator.next();
-		QFileInfo fileInfo = dirIterator.fileInfo();
-		QString absoluteFilePath = fileInfo.absoluteFilePath();
-		stringList.append(absoluteFilePath);
-	}
-	return stringList;
+	//ui.lblEncodeState->setText(QStringLiteral("编码结束。"));
 
 }
