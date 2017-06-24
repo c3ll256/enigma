@@ -19,9 +19,13 @@ signals :
 	void ResetSlot(QString, QString); //线程通信
 	public slots:
 	void clickBtnEncodeChooseAddress();
+	void clickBtnDecodeChooseAddress();
 	void clickRbtnEncodeSaveSide();
+	void clickRbtnDecodeSaveSide();
 	void clickRbtnEncodeChoose();
+	void clickRbtnDecodeChoose();
 	void clickBtnEncode();
+	void clickBtnDecode();
 public:
 	enigma(QWidget *parent = 0);
 	~enigma();
