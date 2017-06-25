@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>600</width>
-    <height>400</height>
+    <height>413</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tabEncode">
      <attribute name="title">
@@ -72,8 +72,8 @@
      <widget class="QRadioButton" name="rbtnEncodeSaveSide">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>160</y>
+        <x>20</x>
+        <y>80</y>
         <width>171</width>
         <height>21</height>
        </rect>
@@ -88,8 +88,8 @@
      <widget class="QRadioButton" name="rbtnEncodeChoose">
       <property name="geometry">
        <rect>
-        <x>240</x>
-        <y>160</y>
+        <x>230</x>
+        <y>80</y>
         <width>89</width>
         <height>21</height>
        </rect>
@@ -107,8 +107,8 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>360</x>
-        <y>160</y>
+        <x>350</x>
+        <y>80</y>
         <width>201</width>
         <height>20</height>
        </rect>
@@ -120,8 +120,8 @@
      <widget class="QCheckBox" name="chkEncodeDebug">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>290</y>
+        <x>20</x>
+        <y>320</y>
         <width>131</width>
         <height>16</height>
        </rect>
@@ -146,21 +146,26 @@
      <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
-        <x>230</x>
-        <y>290</y>
+        <x>20</x>
+        <y>110</y>
         <width>81</width>
         <height>16</height>
        </rect>
       </property>
       <property name="text">
-       <string>状态：</string>
+       <string>信息统计</string>
       </property>
      </widget>
-    </widget>
-    <widget class="QWidget" name="tabEncodeInfo">
-     <attribute name="title">
-      <string>编码信息统计</string>
-     </attribute>
+     <widget class="QTextBrowser" name="textBrowser">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>140</y>
+        <width>531</width>
+        <height>171</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tabDecode">
      <attribute name="title">
@@ -208,8 +213,8 @@
      <widget class="QRadioButton" name="rbtnDecodeSaveSide">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>160</y>
+        <x>20</x>
+        <y>80</y>
         <width>141</width>
         <height>16</height>
        </rect>
@@ -224,8 +229,8 @@
      <widget class="QRadioButton" name="rbtnDecodeChoose">
       <property name="geometry">
        <rect>
-        <x>230</x>
-        <y>160</y>
+        <x>220</x>
+        <y>80</y>
         <width>89</width>
         <height>16</height>
        </rect>
@@ -240,8 +245,8 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>350</x>
-        <y>160</y>
+        <x>340</x>
+        <y>80</y>
         <width>211</width>
         <height>20</height>
        </rect>
@@ -253,8 +258,8 @@
      <widget class="QCheckBox" name="chkDecodeDebug">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>290</y>
+        <x>20</x>
+        <y>320</y>
         <width>121</width>
         <height>16</height>
        </rect>
@@ -266,14 +271,14 @@
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>230</x>
-        <y>290</y>
+        <x>20</x>
+        <y>110</y>
         <width>81</width>
         <height>16</height>
        </rect>
       </property>
       <property name="text">
-       <string>状态：</string>
+       <string>信息统计</string>
       </property>
      </widget>
      <widget class="QLabel" name="lblDecodeState">
@@ -289,11 +294,16 @@
        <string/>
       </property>
      </widget>
-    </widget>
-    <widget class="QWidget" name="tabDecodeInfo">
-     <attribute name="title">
-      <string>解码信息统计</string>
-     </attribute>
+     <widget class="QTextBrowser" name="textBrowser_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>141</y>
+        <width>541</width>
+        <height>171</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
