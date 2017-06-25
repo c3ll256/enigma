@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'enigma.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.0
+** Created by: Qt User Interface Compiler version 5.8.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -93,7 +93,7 @@ public:
         chkEncodeDebug->setGeometry(QRect(30, 290, 131, 16));
         lblEncodeState = new QLabel(tabEncode);
         lblEncodeState->setObjectName(QStringLiteral("lblEncodeState"));
-        lblEncodeState->setGeometry(QRect(320, 290, 151, 16));
+        lblEncodeState->setGeometry(QRect(320, 290, 221, 16));
         label_2 = new QLabel(tabEncode);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setGeometry(QRect(230, 290, 81, 16));

@@ -2,6 +2,7 @@
 #define THREAD_H
 #include <encoder.h>
 #include <QThread>  
+#include <QZXing.h>
 
 class Thread : public QThread
 {
@@ -12,12 +13,13 @@ public:
 	QString RootPath; // txt 或 bmp路径
 	QString SavePath; // 保存路径
 	bool Flag; // 编码，解码标志
+	QZXing decoder; //创建解码实例
 	// 子线程功能
 	void run();
 private:
 	volatile bool stopeed; // 开关标志
-	void Code(); // 编码函数
-	void DeCode(); // 解码函数
+	void enCode(); // 编码函数
+	void deCode(); // 解码函数
 	encoder QRres;
 };
 #endif // THREAD_H
