@@ -59,7 +59,7 @@
      <widget class="QPushButton" name="btnEncodeChooseAddress">
       <property name="geometry">
        <rect>
-        <x>290</x>
+        <x>300</x>
         <y>40</y>
         <width>75</width>
         <height>23</height>
@@ -159,7 +159,7 @@
      <widget class="QTextBrowser" name="txtEncodeDebug">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>50</x>
         <y>140</y>
         <width>541</width>
         <height>171</height>
@@ -200,7 +200,7 @@
      <widget class="QPushButton" name="btnDecode">
       <property name="geometry">
        <rect>
-        <x>390</x>
+        <x>380</x>
         <y>40</y>
         <width>151</width>
         <height>23</height>

@@ -56,24 +56,24 @@ void Thread::enCode() // 子线程，编码函数
 		if (QRres.saveImage(target_Path, 177))// 文件名，图片大小为177*177
 		{
 			success++;
-			if (chk->isChecked())//开启调试则显示调试信息
+			if (enchk->isChecked())//开启调试则显示调试信息
 			{
 				absoluteFilePath.replace("/", "\\");
-				tb->append(nowtime_text + " " + absoluteFilePath + " " + QString::number(fileInfo.size()) + QStringLiteral("字节 成功"));
+				entb->append(nowtime_text + " " + absoluteFilePath + " " + QString::number(fileInfo.size()) + QStringLiteral("字节 成功"));
 			}
 		}
 		else
 		{
-			if (chk->isChecked())
+			if (enchk->isChecked())
 			{
 				absoluteFilePath.replace("/", "\\");
-				tb->append(nowtime_text + " " + absoluteFilePath + " " + QString::number(fileInfo.size()) + QStringLiteral("字节 失败"));
+				entb->append(nowtime_text + " " + absoluteFilePath + " " + QString::number(fileInfo.size()) + QStringLiteral("字节 失败"));
 			}
 		}
 	}
-	if (chk->isChecked())
+	if (enchk->isChecked())
 	{
-		tb->append(QStringLiteral("耗时:") + QString::number(firstTime.msecsTo(lastTime) % 60000 / 1000.0, 'f', 2) + QStringLiteral("秒 共:") + QString::number(Count) + QStringLiteral("个 成功率:") + QString::number((double)success / Count * 100, 'f',2) + "%");
+		entb->append(QStringLiteral("耗时:") + QString::number(firstTime.msecsTo(lastTime) % 60000 / 1000.0, 'f', 2) + QStringLiteral("秒 共:") + QString::number(Count) + QStringLiteral("个 成功率:") + QString::number((double)success / Count * 100, 'f',2) + "%");
 	}
 }
 
@@ -85,7 +85,8 @@ void Thread::deCode() // 子线程，解码函数
 	filters << QString("*.bmp");
 	QDirIterator dirIterator(path, filters, QDir::Files | QDir::NoSymLinks,
 		QDirIterator::Subdirectories);
-	int Count = 000; // 递增序列
+	int Count = 0, success = 0, flag = 0; // 递增序列
+	QDateTime firstTime = QDateTime::currentDateTime(), lastTime = QDateTime::currentDateTime();//解码时间
 	while (dirIterator.hasNext())
 	{
 		dirIterator.next();
@@ -93,14 +94,35 @@ void Thread::deCode() // 子线程，解码函数
 		QString absoluteFilePath = fileInfo.absoluteFilePath(); // 文件完整路径
 		QString decodeData = decoder.decodeImageFromFile(absoluteFilePath); //解码并保存文本
 		QDateTime nowtime = QDateTime::currentDateTime(); //获取当前系统时间
+		lastTime = nowtime;
 		QString nowtime_text = nowtime.toString("yyyyMMddhhmmss"); // 当前系统时间格式
 		QString target_Path = (isSaveSideChecked ? fileInfo.path() + "/" : SavePath) + nowtime_text + (Count < 100 ? "0" : "") + (Count < 10 ? "0" : "") + QString::number(Count, 10) + ".txt"; //保存txt文件的文件名
 		QFile file(target_Path);
-		file.open(QIODevice::WriteOnly | QIODevice::Text);//创建文件
+		file.open(QIODevice::WriteOnly | QIODevice::Text);
 		QTextStream in(&file);
 		in << decodeData;//写入解码数据至文件
 		file.flush();//刷新文件
 		file.close();//关闭文件
 		Count++; // 序列递增
+		success++;
+			if (dechk->isChecked())//开启调试则显示调试信息
+			{
+				absoluteFilePath.replace("/", "\\");
+				detb->append(nowtime_text + " " + absoluteFilePath + " " + QString::number(fileInfo.size()) + QStringLiteral("字节 成功"));
+			}
+			else
+			{
+				if (dechk->isChecked())
+				{
+					absoluteFilePath.replace("/", "\\");
+					detb->append(nowtime_text + " " + absoluteFilePath + " " + QString::number(fileInfo.size()) + QStringLiteral("字节 失败"));
+				}
+			}
+
+			if (dechk->isChecked())
+			{
+				detb->append(QStringLiteral("耗时:") + QString::number(firstTime.msecsTo(lastTime) % 60000 / 1000.0, 'f', 2) + QStringLiteral("秒 共:") + QString::number(Count) + QStringLiteral("个 成功率:") + QString::number((double)success / Count * 100, 'f', 2) + "%");
+			}
+		
+		}
 	}
-}
