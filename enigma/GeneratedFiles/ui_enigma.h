@@ -42,7 +42,7 @@ public:
     QCheckBox *chkEncodeDebug;
     QLabel *lblEncodeState;
     QLabel *label_2;
-    QTextBrowser *textBrowser;
+    QTextBrowser *txtEncodeDebug;
     QWidget *tabDecode;
     QLineEdit *lineBmpNowAddress;
     QPushButton *btnDecodeChooseAddress;
@@ -53,7 +53,7 @@ public:
     QCheckBox *chkDecodeDebug;
     QLabel *label_3;
     QLabel *lblDecodeState;
-    QTextBrowser *textBrowser_2;
+    QTextBrowser *txtDecodeDebug;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *enigmaClass)
@@ -91,16 +91,16 @@ public:
         lineEncodeSaveNowAddress->setGeometry(QRect(350, 80, 201, 20));
         chkEncodeDebug = new QCheckBox(tabEncode);
         chkEncodeDebug->setObjectName(QStringLiteral("chkEncodeDebug"));
-        chkEncodeDebug->setGeometry(QRect(20, 320, 131, 16));
+        chkEncodeDebug->setGeometry(QRect(20, 320, 131, 21));
         lblEncodeState = new QLabel(tabEncode);
         lblEncodeState->setObjectName(QStringLiteral("lblEncodeState"));
-        lblEncodeState->setGeometry(QRect(320, 290, 221, 16));
+        lblEncodeState->setGeometry(QRect(230, 110, 221, 16));
         label_2 = new QLabel(tabEncode);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setGeometry(QRect(20, 110, 81, 16));
-        textBrowser = new QTextBrowser(tabEncode);
-        textBrowser->setObjectName(QStringLiteral("textBrowser"));
-        textBrowser->setGeometry(QRect(20, 140, 531, 171));
+        txtEncodeDebug = new QTextBrowser(tabEncode);
+        txtEncodeDebug->setObjectName(QStringLiteral("txtEncodeDebug"));
+        txtEncodeDebug->setGeometry(QRect(20, 140, 541, 171));
         tabWidget->addTab(tabEncode, QString());
         tabDecode = new QWidget();
         tabDecode->setObjectName(QStringLiteral("tabDecode"));
@@ -132,10 +132,10 @@ public:
         label_3->setGeometry(QRect(20, 110, 81, 16));
         lblDecodeState = new QLabel(tabDecode);
         lblDecodeState->setObjectName(QStringLiteral("lblDecodeState"));
-        lblDecodeState->setGeometry(QRect(320, 290, 151, 16));
-        textBrowser_2 = new QTextBrowser(tabDecode);
-        textBrowser_2->setObjectName(QStringLiteral("textBrowser_2"));
-        textBrowser_2->setGeometry(QRect(20, 141, 541, 171));
+        lblDecodeState->setGeometry(QRect(220, 110, 151, 16));
+        txtDecodeDebug = new QTextBrowser(tabDecode);
+        txtDecodeDebug->setObjectName(QStringLiteral("txtDecodeDebug"));
+        txtDecodeDebug->setGeometry(QRect(20, 141, 541, 171));
         tabWidget->addTab(tabDecode, QString());
         enigmaClass->setCentralWidget(centralWidget);
         statusBar = new QStatusBar(enigmaClass);
@@ -144,7 +144,7 @@ public:
 
         retranslateUi(enigmaClass);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(enigmaClass);

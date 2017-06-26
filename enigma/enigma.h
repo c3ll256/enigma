@@ -29,11 +29,9 @@ signals :
 public:
 	enigma(QWidget *parent = 0);
 	~enigma();
-	QString RootPath; // 根目录
-	QString SavePath;// 保存目录
+
 private:
 	Ui::enigmaClass ui;
-	int count;
 	QTime Timer;
 	Thread EnCode;
 	Thread DeCode;

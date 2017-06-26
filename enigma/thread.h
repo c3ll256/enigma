@@ -3,7 +3,8 @@
 #include <encoder.h>
 #include <QThread>  
 #include <QZXing.h>
-
+class QCheckBox;
+class QTextBrowser;
 class Thread : public QThread
 {
 	Q_OBJECT
@@ -13,7 +14,10 @@ public:
 	QString RootPath; // txt 或 bmp路径
 	QString SavePath; // 保存路径
 	bool Flag; // 编码，解码标志
-	QZXing decoder; //创建解码实例
+	bool isSaveSideChecked;//是否是保存在旁边
+	QZXing decoder;//创建解码实例	
+	QCheckBox *chk;//控制ui
+	QTextBrowser *tb;//控制ui
 	// 子线程功能
 	void run();
 private:

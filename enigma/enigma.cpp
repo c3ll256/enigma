@@ -34,9 +34,9 @@ void enigma::clickBtnEncodeChooseAddress()//选择要编码的txt的文件夹根路径
 	QString getPath = QFileDialog::getExistingDirectory(this);
 	if (!getPath.isNull())
 	{
+		getPath.replace("/", "\\");//windows目录格式
 		ui.lineTxtNowAddress->setText(getPath);
 	}
-	RootPath = getPath;
 }
 
 void enigma::clickBtnDecodeChooseAddress()//选择要编码的bmp的文件夹根路径
@@ -44,9 +44,9 @@ void enigma::clickBtnDecodeChooseAddress()//选择要编码的bmp的文件夹根路径
 	QString getPath = QFileDialog::getExistingDirectory(this);
 	if (!getPath.isNull())
 	{
-		ui.lineTxtNowAddress->setText(getPath);
+		getPath.replace("/", "\\");
+		ui.lineBmpNowAddress->setText(getPath);
 	}
-	RootPath = getPath;
 }
 
 void enigma::clickRbtnEncodeSaveSide()//选择保存图片到文本旁
@@ -65,9 +65,9 @@ void enigma::clickRbtnEncodeChoose()//选择保存的图片路径
 	QString getPath = QFileDialog::getExistingDirectory(this);
 	if (!getPath.isNull())
 	{
+		getPath.replace("/", "\\");
 		ui.lineEncodeSaveNowAddress->setText(getPath);
 	}
-	enigma::SavePath = getPath;
 }
 
 void enigma::clickRbtnDecodeChoose()//选择保存的文本路径
@@ -76,22 +76,25 @@ void enigma::clickRbtnDecodeChoose()//选择保存的文本路径
 	QString getPath = QFileDialog::getExistingDirectory(this);
 	if (!getPath.isNull())
 	{
+		getPath.replace("/", "\\");
 		ui.lineDecodeSaveNowAddress->setText(getPath);
 	}
-	enigma::SavePath = getPath;
 }
 
 void enigma::clickBtnEncode()//开始编码
 {
 	EnCode.Flag = true;
-	RootPath = ui.lineTxtNowAddress->text();
-	QDir txtPath(ui.lineTxtNowAddress->text()),savePath(ui.lineEncodeSaveNowAddress->text());
+	QString txtPathText(ui.lineTxtNowAddress->text()), savePathText(ui.lineEncodeSaveNowAddress->text());
+	txtPathText.replace("\\", "/");//更换QT能工作的目录
+	savePathText.replace("\\", "/");
+	QDir txtPath(txtPathText),savePath(savePathText);
 	if (!txtPath.exists())//判断需要编码的根文件夹是否存在
 	{
 		ui.lblEncodeState->setStyleSheet("color:red;");
 		ui.lblEncodeState->setText(QStringLiteral("需要编码的根文件夹不存在"));
 		return;
 	}
+
 	if (ui.rbtnEncodeChoose->isChecked())
 	{//如果另存到同一路径下，则看是否存在或能否创建
 		if (!savePath.exists() && !savePath.mkdir(ui.lineEncodeSaveNowAddress->text()))
@@ -102,28 +105,31 @@ void enigma::clickBtnEncode()//开始编码
 		}
 	}
 	//开始编码
-	ui.chkEncodeDebug->setEnabled(false);
 	ui.btnEncode->setEnabled(false);
+	ui.txtEncodeDebug->setText("");
 	ui.lblEncodeState->setStyleSheet("color:black;");
 	ui.lblEncodeState->setText(QStringLiteral("编码中..."));
-	count = 0;
-	//QStringList allTxtPath = getAllFilePath(true,ui.lineTxtNowAddress->text());
-	if (ui.lineEncodeSaveNowAddress->isEnabled() == false) // 设置保存目录为当前路径
-		SavePath = RootPath; 
-	EnCode.RootPath = enigma::RootPath; // 设置编码线程根目录
-	EnCode.SavePath = enigma::SavePath; //设置编码线程保存目录
+	EnCode.isSaveSideChecked = ui.rbtnEncodeSaveSide->isChecked();//是否保存在旁边
+	EnCode.RootPath = txtPathText;  // 设置编码线程根目录
+	EnCode.SavePath = savePathText;  //设置编码线程保存目录
+	EnCode.chk = ui.chkEncodeDebug;
+	EnCode.tb = ui.txtEncodeDebug;
 	EnCode.start(); // 解码线程开始工作
 	//结束编码
-	//ui.lblEncodeState->setText(QStringLiteral("编码结束。"));
+	ui.lblEncodeState->setStyleSheet("color:green");
+	ui.lblEncodeState->setText(QStringLiteral("编码结束。"));
+	ui.btnEncode->setEnabled(true);
 
 }
 
 void enigma::clickBtnDecode()//开始解码
 {
 	DeCode.Flag = false;
-	RootPath = ui.lineTxtNowAddress->text();
-	QDir txtPath(ui.lineTxtNowAddress->text()), savePath(ui.lineDecodeSaveNowAddress->text());
-	if (!txtPath.exists())//判断需要解码的根文件夹是否存在
+	QString bmpPathText(ui.lineBmpNowAddress->text()), savePathText(ui.lineDecodeSaveNowAddress->text());
+	bmpPathText.replace("\\", "/");//更换QT能工作的目录
+	savePathText.replace("\\", "/");
+	QDir bmpPath(bmpPathText), savePath(savePathText);
+	if (!bmpPath.exists())//判断需要解码的根文件夹是否存在
 	{
 		ui.lblDecodeState->setStyleSheet("color:red;");
 		ui.lblDecodeState->setText(QStringLiteral("需要解码的根文件夹不存在"));
@@ -139,18 +145,15 @@ void enigma::clickBtnDecode()//开始解码
 		}
 	}
 	//开始解码
-	ui.chkDecodeDebug->setEnabled(false);
 	ui.btnDecode->setEnabled(false);
 	ui.lblDecodeState->setStyleSheet("color:black;");
 	ui.lblDecodeState->setText(QStringLiteral("解码中..."));
-	count = 0;
-	//QStringList allTxtPath = getAllFilePath(true,ui.lineTxtNowAddress->text());
-	if (ui.lineDecodeSaveNowAddress->isEnabled() == false) // 设置保存目录为当前路径
-		SavePath = RootPath;
-	DeCode.RootPath = enigma::RootPath; // 设置解码线程根目录
-	DeCode.SavePath = enigma::SavePath; //设置解码线程保存目录
+	DeCode.isSaveSideChecked = ui.rbtnDecodeSaveSide->isChecked();
+	DeCode.RootPath = bmpPathText; // 设置解码线程根目录
+	DeCode.SavePath = savePathText; //设置解码线程保存目录
 	DeCode.start(); // 解码线程开始工作
 					//结束解码
-					//ui.lblEncodeState->setText(QStringLiteral("解码结束。"));
-
+	ui.lblDecodeState->setStyleSheet("color:green");
+	ui.lblDecodeState->setText(QStringLiteral("解码结束。"));
+	ui.btnDecode->setEnabled(true);
 }
