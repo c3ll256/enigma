@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tabEncode">
      <attribute name="title">
@@ -123,7 +123,7 @@
         <x>20</x>
         <y>320</y>
         <width>131</width>
-        <height>16</height>
+        <height>21</height>
        </rect>
       </property>
       <property name="text">
@@ -133,8 +133,8 @@
      <widget class="QLabel" name="lblEncodeState">
       <property name="geometry">
        <rect>
-        <x>320</x>
-        <y>290</y>
+        <x>230</x>
+        <y>110</y>
         <width>221</width>
         <height>16</height>
        </rect>
@@ -156,12 +156,12 @@
        <string>信息统计</string>
       </property>
      </widget>
-     <widget class="QTextBrowser" name="textBrowser">
+     <widget class="QTextBrowser" name="txtEncodeDebug">
       <property name="geometry">
        <rect>
         <x>20</x>
         <y>140</y>
-        <width>531</width>
+        <width>541</width>
         <height>171</height>
        </rect>
       </property>
@@ -284,8 +284,8 @@
      <widget class="QLabel" name="lblDecodeState">
       <property name="geometry">
        <rect>
-        <x>320</x>
-        <y>290</y>
+        <x>220</x>
+        <y>110</y>
         <width>151</width>
         <height>16</height>
        </rect>
@@ -294,7 +294,7 @@
        <string/>
       </property>
      </widget>
-     <widget class="QTextBrowser" name="textBrowser_2">
+     <widget class="QTextBrowser" name="txtDecodeDebug">
       <property name="geometry">
        <rect>
         <x>20</x>
