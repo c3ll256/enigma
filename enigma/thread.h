@@ -16,8 +16,10 @@ public:
 	bool Flag; // 编码，解码标志
 	bool isSaveSideChecked;//是否是保存在旁边
 	QZXing decoder;//创建解码实例	
-	QCheckBox *chk;//控制ui
-	QTextBrowser *tb;//控制ui
+	QCheckBox *enchk;//控制ui
+	QTextBrowser *entb;//控制ui
+	QCheckBox *dechk;//控制ui
+	QTextBrowser *detb;//控制ui'
 	// 子线程功能
 	void run();
 private:

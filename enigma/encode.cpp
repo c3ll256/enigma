@@ -46,7 +46,7 @@ void encoder::generateString(QString str) // 生成二维码数据结构
 	}
 	qr = QRcode_encodeString(string.toStdString().c_str(),
 		1,
-		QR_ECLEVEL_L,
+		QR_ECLEVEL_H,
 		QR_MODE_8,
 		1);
 	update();
@@ -74,7 +74,7 @@ void encoder::draw(QPainter &painter, int width, int height) // 绘制二维码图像
 	}
 }
 
-void encoder::paintEvent(QPaintEvent *) // 设置笔刷
+void encoder::paintEvent(QPaintEvent *) // 设置画布和笔刷
 {
 	QPainter painter(this);
 	QColor background(Qt::white);
@@ -83,7 +83,8 @@ void encoder::paintEvent(QPaintEvent *) // 设置笔刷
 	painter.drawRect(0, 0, width(), height());
 	if (qr != NULL)
 	{
-		draw(painter, width(), height());
+		int qr_width = qr->width > 0 ? qr->width : 1;
+		draw(painter, qr_width, qr_width);
 	}
 }
 
