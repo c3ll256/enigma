@@ -18,7 +18,7 @@ void Thread::run()
 	else {
 		deCode(); // 解码函数
 	}
-
+	endUpdateUI();
 }
 
 void Thread::stop()
@@ -125,11 +125,9 @@ void Thread::deCode() // 子线程，解码函数
 				tb->append(nowtime_text + " " + absoluteFilePath + " " + QString::number(fileInfo.size()) + QStringLiteral("字节 失败"));
 			}
 		}
-
-		if (chk->isChecked())
-		{
-			tb->append(QStringLiteral("耗时:") + QString::number(firstTime.msecsTo(lastTime) % 60000 / 1000.0, 'f', 2) + QStringLiteral("秒 共") + QString::number(Count) + QStringLiteral("个 成功率:") + QString::number((double)success / Count * 100, 'f', 2) + "%");
-		}
-
+	}
+	if (chk->isChecked())
+	{
+		tb->append(QStringLiteral("耗时:") + QString::number(firstTime.msecsTo(lastTime) % 60000 / 1000.0, 'f', 2) + QStringLiteral("秒 共") + QString::number(Count) + QStringLiteral("个 成功率:") + QString::number((double)success / Count * 100, 'f', 2) + "%");
 	}
 }

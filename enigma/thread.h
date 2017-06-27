@@ -8,6 +8,8 @@ class QTextBrowser;
 class Thread : public QThread
 {
 	Q_OBJECT
+		signals :
+	void endUpdateUI();
 public:
 	Thread(); //构造函数
 	void stop(); //停止线程
@@ -17,7 +19,7 @@ public:
 	bool isSaveSideChecked;//是否是保存在旁边
 	QZXing decoder;//创建解码实例	
 	QCheckBox *chk;//控制ui
-	QTextBrowser *tb;//控制ui
+	QTextBrowser *tb;
 	void run();
 private:
 	volatile bool stopeed; // 开关标志
