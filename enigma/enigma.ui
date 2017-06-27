@@ -159,7 +159,7 @@
      <widget class="QTextBrowser" name="txtEncodeDebug">
       <property name="geometry">
        <rect>
-        <x>50</x>
+        <x>20</x>
         <y>140</y>
         <width>541</width>
         <height>171</height>

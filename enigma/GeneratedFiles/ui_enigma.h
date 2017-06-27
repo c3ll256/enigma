@@ -100,7 +100,7 @@ public:
         label_2->setGeometry(QRect(20, 110, 81, 16));
         txtEncodeDebug = new QTextBrowser(tabEncode);
         txtEncodeDebug->setObjectName(QStringLiteral("txtEncodeDebug"));
-        txtEncodeDebug->setGeometry(QRect(50, 140, 541, 171));
+        txtEncodeDebug->setGeometry(QRect(20, 140, 541, 171));
         tabWidget->addTab(tabEncode, QString());
         tabDecode = new QWidget();
         tabDecode->setObjectName(QStringLiteral("tabDecode"));
