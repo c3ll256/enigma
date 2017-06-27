@@ -93,7 +93,6 @@ void Thread::deCode() // 子线程，解码函数
 		QFileInfo fileInfo = dirIterator.fileInfo();
 		QString absoluteFilePath = fileInfo.absoluteFilePath(); // 文件完整路径
 		QString decodeData = decoder.decodeImageFromFile(absoluteFilePath); //解码并保存文本
-		QString format = decoder.foundedFormat();
 		QDateTime nowtime = QDateTime::currentDateTime(); //获取当前系统时间
 		lastTime = nowtime;
 		QString nowtime_text = nowtime.toString("yyyyMMddhhmmss"); // 当前系统时间格式
@@ -109,7 +108,7 @@ void Thread::deCode() // 子线程，解码函数
 			if (dechk->isChecked())//开启调试则显示调试信息
 			{
 				absoluteFilePath.replace("/", "\\");
-				detb->append(nowtime_text + " " + absoluteFilePath + " " + QString::number(fileInfo.size()) + QStringLiteral("字节 成功")+ format);
+				detb->append(nowtime_text + " " + absoluteFilePath + " " + QString::number(fileInfo.size()) + QStringLiteral("字节 成功"));
 			}
 			else
 			{
@@ -124,6 +123,6 @@ void Thread::deCode() // 子线程，解码函数
 			{
 				detb->append(QStringLiteral("耗时:") + QString::number(firstTime.msecsTo(lastTime) % 60000 / 1000.0, 'f', 2) + QStringLiteral("秒 共:") + QString::number(Count) + QStringLiteral("个 成功率:") + QString::number((double)success / Count * 100, 'f', 2) + "%");
 			}
-			
+		
 		}
 	}
