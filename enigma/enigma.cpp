@@ -95,7 +95,7 @@ void enigma::clickBtnEncode()//开始编码
 	txtPathText.replace("\\", "/");//更换QT能工作的目录
 	savePathText.replace("\\", "/");
 	QDir txtPath(txtPathText),savePath(savePathText);
-	if (!txtPath.exists())//判断需要编码的根文件夹是否存在
+	if (!txtPath.exists()||txtPathText=="")//判断需要编码的根文件夹是否存在
 	{
 		ui.lblEncodeState->setStyleSheet("color:red;");
 		ui.lblEncodeState->setText(QStringLiteral("需要编码的根文件夹不存在"));
@@ -104,7 +104,7 @@ void enigma::clickBtnEncode()//开始编码
 
 	if (ui.rbtnEncodeChoose->isChecked())
 	{//如果另存到同一路径下，则看是否存在或能否创建
-		if (!savePath.exists() && !savePath.mkdir(ui.lineEncodeSaveNowAddress->text()))
+		if (savePathText == ""||(!savePath.exists() && !savePath.mkdir(ui.lineEncodeSaveNowAddress->text())))
 		{
 			ui.lblEncodeState->setStyleSheet("color:red;");
 			ui.lblEncodeState->setText(QStringLiteral("保存地址不存在并且创建失败"));
@@ -131,7 +131,7 @@ void enigma::clickBtnDecode()//开始解码
 	bmpPathText.replace("\\", "/");//更换QT能工作的目录
 	savePathText.replace("\\", "/");
 	QDir bmpPath(bmpPathText), savePath(savePathText);
-	if (!bmpPath.exists())//判断需要解码的根文件夹是否存在
+	if (!bmpPath.exists()||bmpPathText == "")//判断需要解码的根文件夹是否存在
 	{
 		ui.lblDecodeState->setStyleSheet("color:red;");
 		ui.lblDecodeState->setText(QStringLiteral("需要解码的根文件夹不存在"));
@@ -139,7 +139,7 @@ void enigma::clickBtnDecode()//开始解码
 	}
 	if (ui.rbtnDecodeChoose->isChecked())
 	{//如果另存到同一路径下，则看是否存在或能否创建
-		if (!savePath.exists() && !savePath.mkdir(ui.lineDecodeSaveNowAddress->text()))
+		if (savePathText==""||(!savePath.exists() && !savePath.mkdir(ui.lineDecodeSaveNowAddress->text())))
 		{
 			ui.lblDecodeState->setStyleSheet("color:red;");
 			ui.lblDecodeState->setText(QStringLiteral("保存地址不存在并且创建失败"));
