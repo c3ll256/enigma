@@ -53,7 +53,7 @@ void Thread::enCode() // 子线程，编码函数
 		QString target_Path = (isSaveSideChecked ? fileInfo.path() + "/" : SavePath) + nowtime_text + (Count < 100 ? "0" : "") + (Count < 10 ? "0" : "") + QString::number(Count, 10) + ".bmp"; //保存 bmp文件的文件名
 		nowtime_text = nowtime.toString("hh:mm:ss");
 		Count++; // 序列递增
-		if (QRres.saveImage(target_Path, 250))// 文件名，图片大小为250*250
+		if (QRres.saveImage(target_Path))// 文件名，图片大小为250*250
 		{
 			success++;
 			if (chk->isChecked())//开启调试则显示调试信息
