@@ -11,18 +11,25 @@ enigma::enigma(QWidget *parent)
 {
 	ui.setupUi(this);
 	EnCode.Flag = true; 
-	//encode信号与槽连接 begin
+	//信号与槽连接 begin
 	connect(ui.btnEncodeChooseAddress, SIGNAL(clicked()), this, SLOT(clickBtnEncodeChooseAddress()));
 	connect(ui.rbtnEncodeSaveSide, SIGNAL(clicked()), this, SLOT(clickRbtnEncodeSaveSide()));
 	connect(ui.rbtnEncodeChoose, SIGNAL(clicked()), this, SLOT(clickRbtnEncodeChoose()));
 	connect(ui.btnEncode, SIGNAL(clicked()), this, SLOT(clickBtnEncode()));
-	//encode信号与槽连接 end
-	//dencode信号与槽连接 begin
 	connect(ui.btnDecodeChooseAddress, SIGNAL(clicked()), this, SLOT(clickBtnDecodeChooseAddress()));
 	connect(ui.rbtnDecodeSaveSide, SIGNAL(clicked()), this, SLOT(clickRbtnDecodeSaveSide()));
 	connect(ui.rbtnDecodeChoose, SIGNAL(clicked()), this, SLOT(clickRbtnDecodeChoose()));
 	connect(ui.btnDecode, SIGNAL(clicked()), this, SLOT(clickBtnDecode()));
-	//dencode信号与槽连接 end
+	connect(&EnCode, SIGNAL(endUpdateUI()), this, SLOT(endUpdateEncodeUI()));
+	connect(&DeCode, SIGNAL(endUpdateUI()), this, SLOT(endUpdateDecodeUI()));
+	//信号与槽连接 end
+
+	//传递指针 begin
+	EnCode.chk = ui.chkEncodeDebug;
+	EnCode.tb = ui.txtEncodeDebug;
+	DeCode.chk = ui.chkDecodeDebug;
+	DeCode.tb = ui.txtDecodeDebug;
+	//传递指针 end
 }
 
 enigma::~enigma()
@@ -112,13 +119,8 @@ void enigma::clickBtnEncode()//开始编码
 	EnCode.isSaveSideChecked = ui.rbtnEncodeSaveSide->isChecked();//是否保存在旁边
 	EnCode.RootPath = txtPathText;  // 设置编码线程根目录
 	EnCode.SavePath = savePathText;  //设置编码线程保存目录
-	EnCode.enchk = ui.chkEncodeDebug;//设置ui指针
-	EnCode.entb = ui.txtEncodeDebug;
 	EnCode.start(); // 解码线程开始工作
 	//结束编码
-	ui.lblEncodeState->setStyleSheet("color:green");
-	ui.lblEncodeState->setText(QStringLiteral("编码结束。"));
-	ui.btnEncode->setEnabled(true);
 
 }
 
@@ -146,16 +148,26 @@ void enigma::clickBtnDecode()//开始解码
 	}
 	//开始解码
 	ui.btnDecode->setEnabled(false);
+	ui.txtDecodeDebug->setText("");
 	ui.lblDecodeState->setStyleSheet("color:black;");
 	ui.lblDecodeState->setText(QStringLiteral("解码中..."));
 	DeCode.isSaveSideChecked = ui.rbtnDecodeSaveSide->isChecked();
 	DeCode.RootPath = bmpPathText; // 设置解码线程根目录
 	DeCode.SavePath = savePathText; //设置解码线程保存目录
-	DeCode.dechk = ui.chkDecodeDebug;//设置ui指针
-	DeCode.detb = ui.txtDecodeDebug;
 	DeCode.start(); // 解码线程开始工作
 	//结束解码
+}
+
+void enigma::endUpdateEncodeUI()
+{//编码结束后的调整
+	ui.lblEncodeState->setStyleSheet("color:green");
+	ui.lblEncodeState->setText(QStringLiteral("编码完成..."));
+	ui.btnEncode->setEnabled(true);
+}
+
+void enigma::endUpdateDecodeUI()
+{//解码结束后的调整
 	ui.lblDecodeState->setStyleSheet("color:green");
-	ui.lblDecodeState->setText(QStringLiteral("解码结束。"));
+	ui.lblDecodeState->setText(QStringLiteral("解码完成..."));
 	ui.btnDecode->setEnabled(true);
 }

@@ -15,7 +15,7 @@
 class enigma : public QMainWindow
 {
 	Q_OBJECT
-signals :
+		signals :
 	void ResetSlot(QString, QString); //线程通信
 	public slots:
 	void clickBtnEncodeChooseAddress();
@@ -26,6 +26,8 @@ signals :
 	void clickRbtnDecodeChoose();
 	void clickBtnEncode();
 	void clickBtnDecode();
+	void endUpdateEncodeUI();
+	void endUpdateDecodeUI();
 public:
 	enigma(QWidget *parent = 0);
 	~enigma();
