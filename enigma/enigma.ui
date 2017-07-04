@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>600</width>
-    <height>400</height>
+    <height>413</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -59,7 +59,7 @@
      <widget class="QPushButton" name="btnEncodeChooseAddress">
       <property name="geometry">
        <rect>
-        <x>290</x>
+        <x>300</x>
         <y>40</y>
         <width>75</width>
         <height>23</height>
@@ -72,10 +72,10 @@
      <widget class="QRadioButton" name="rbtnEncodeSaveSide">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>160</y>
-        <width>171</width>
-        <height>21</height>
+        <x>20</x>
+        <y>80</y>
+        <width>141</width>
+        <height>16</height>
        </rect>
       </property>
       <property name="text">
@@ -88,10 +88,10 @@
      <widget class="QRadioButton" name="rbtnEncodeChoose">
       <property name="geometry">
        <rect>
-        <x>240</x>
-        <y>160</y>
+        <x>230</x>
+        <y>80</y>
         <width>89</width>
-        <height>21</height>
+        <height>16</height>
        </rect>
       </property>
       <property name="text">
@@ -107,9 +107,9 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>360</x>
-        <y>160</y>
-        <width>201</width>
+        <x>350</x>
+        <y>80</y>
+        <width>210</width>
         <height>20</height>
        </rect>
       </property>
@@ -120,10 +120,10 @@
      <widget class="QCheckBox" name="chkEncodeDebug">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>290</y>
-        <width>131</width>
-        <height>16</height>
+        <x>20</x>
+        <y>320</y>
+        <width>130</width>
+        <height>20</height>
        </rect>
       </property>
       <property name="text">
@@ -133,8 +133,8 @@
      <widget class="QLabel" name="lblEncodeState">
       <property name="geometry">
        <rect>
-        <x>320</x>
-        <y>290</y>
+        <x>230</x>
+        <y>110</y>
         <width>221</width>
         <height>16</height>
        </rect>
@@ -146,21 +146,26 @@
      <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
-        <x>230</x>
-        <y>290</y>
+        <x>20</x>
+        <y>110</y>
         <width>81</width>
         <height>16</height>
        </rect>
       </property>
       <property name="text">
-       <string>状态：</string>
+       <string>信息统计</string>
       </property>
      </widget>
-    </widget>
-    <widget class="QWidget" name="tabEncodeInfo">
-     <attribute name="title">
-      <string>编码信息统计</string>
-     </attribute>
+     <widget class="QTextBrowser" name="txtEncodeDebug">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>140</y>
+        <width>540</width>
+        <height>170</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tabDecode">
      <attribute name="title">
@@ -184,7 +189,7 @@
        <rect>
         <x>300</x>
         <y>40</y>
-        <width>71</width>
+        <width>75</width>
         <height>23</height>
        </rect>
       </property>
@@ -195,9 +200,9 @@
      <widget class="QPushButton" name="btnDecode">
       <property name="geometry">
        <rect>
-        <x>390</x>
+        <x>380</x>
         <y>40</y>
-        <width>151</width>
+        <width>141</width>
         <height>23</height>
        </rect>
       </property>
@@ -208,8 +213,8 @@
      <widget class="QRadioButton" name="rbtnDecodeSaveSide">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>160</y>
+        <x>20</x>
+        <y>80</y>
         <width>141</width>
         <height>16</height>
        </rect>
@@ -225,7 +230,7 @@
       <property name="geometry">
        <rect>
         <x>230</x>
-        <y>160</y>
+        <y>80</y>
         <width>89</width>
         <height>16</height>
        </rect>
@@ -241,8 +246,8 @@
       <property name="geometry">
        <rect>
         <x>350</x>
-        <y>160</y>
-        <width>211</width>
+        <y>80</y>
+        <width>210</width>
         <height>20</height>
        </rect>
       </property>
@@ -253,10 +258,10 @@
      <widget class="QCheckBox" name="chkDecodeDebug">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>290</y>
-        <width>121</width>
-        <height>16</height>
+        <x>20</x>
+        <y>320</y>
+        <width>130</width>
+        <height>20</height>
        </rect>
       </property>
       <property name="text">
@@ -266,21 +271,21 @@
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>230</x>
-        <y>290</y>
+        <x>20</x>
+        <y>110</y>
         <width>81</width>
         <height>16</height>
        </rect>
       </property>
       <property name="text">
-       <string>状态：</string>
+       <string>信息统计</string>
       </property>
      </widget>
      <widget class="QLabel" name="lblDecodeState">
       <property name="geometry">
        <rect>
-        <x>320</x>
-        <y>290</y>
+        <x>220</x>
+        <y>110</y>
         <width>151</width>
         <height>16</height>
        </rect>
@@ -289,11 +294,16 @@
        <string/>
       </property>
      </widget>
-    </widget>
-    <widget class="QWidget" name="tabDecodeInfo">
-     <attribute name="title">
-      <string>解码信息统计</string>
-     </attribute>
+     <widget class="QTextBrowser" name="txtDecodeDebug">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>140</y>
+        <width>540</width>
+        <height>170</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>

@@ -15,19 +15,21 @@ encoder::~encoder()
 	}
 }
 
-bool encoder::saveImage(QString fileName, int size) // 保存图片名（使用完整路径），保存图片大小为size*size 像素
+bool encoder::saveImage(QString fileName) // 保存图片名（使用完整路径），保存图片大小为size*size 像素
 {
-	if (size != 0 && !fileName.isEmpty())
+	if (!fileName.isEmpty())
 	{
-		QImage image(size, size, QImage::Format_Mono);
+		int qr_width = qr->width > 0 ? qr->width : 1;
+		qr_width *= 4;
+		QImage image(qr_width, qr_width, QImage::Format_Mono);
 		QPainter painter(&image);
 		QColor background(Qt::white);
 		painter.setBrush(background);
 		painter.setPen(Qt::NoPen);
-		painter.drawRect(0, 0, size, size);
+		painter.drawRect(0, 0, qr_width, qr_width);
 		if (qr != NULL)
 		{
-			draw(painter, size, size);
+			draw(painter, qr_width, qr_width);
 		}
 		return image.save(fileName);
 	}
@@ -46,7 +48,7 @@ void encoder::generateString(QString str) // 生成二维码数据结构
 	}
 	qr = QRcode_encodeString(string.toStdString().c_str(),
 		1,
-		QR_ECLEVEL_L,
+		QR_ECLEVEL_H,
 		QR_MODE_8,
 		1);
 	update();
@@ -74,7 +76,7 @@ void encoder::draw(QPainter &painter, int width, int height) // 绘制二维码图像
 	}
 }
 
-void encoder::paintEvent(QPaintEvent *) // 设置笔刷
+void encoder::paintEvent(QPaintEvent *) // 设置画布
 {
 	QPainter painter(this);
 	QColor background(Qt::white);
@@ -83,36 +85,7 @@ void encoder::paintEvent(QPaintEvent *) // 设置笔刷
 	painter.drawRect(0, 0, width(), height());
 	if (qr != NULL)
 	{
-		draw(painter, width(), height());
-	}
-}
-
-QSize encoder::sizeHint()  const
-{
-	QSize s;
-	if (qr != NULL)
-	{
 		int qr_width = qr->width > 0 ? qr->width : 1;
-		s = QSize(qr_width * 4, qr_width * 4);
+		draw(painter, qr_width, qr_width);
 	}
-	else
-	{
-		s = QSize(50, 50);
-	}
-	return s;
-}
-
-QSize encoder::minimumSizeHint()  const 
-{
-	QSize s;
-	if (qr != NULL)
-	{
-		int qr_width = qr->width > 0 ? qr->width : 1;
-		s = QSize(qr_width, qr_width);
-	}
-	else
-	{
-		s = QSize(50, 50);
-	}
-	return s;
 }
